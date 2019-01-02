@@ -1,5 +1,4 @@
 #!/bin/bash
-set -e
 
 echo "Setting up"
 rm -rf /tmp/processor-oom-test-0*
@@ -26,16 +25,13 @@ cp -r /tmp/processor-oom-test-01/ /tmp/processor-oom-test-05/
 
 echo "Starting logging"
 rm -f /tmp/pmap.log && rm -f /tmp/ps.log 
-set +e
 timeout --foreground 1 sh -c './log.sh;:'
 
 echo "Starting stress test"
 cd /tmp
-set +e
 timeout --foreground 1 sh -c 'stress --io 50 --hdd 50 --hdd-bytes 10G --timeout 120s;:'
 
 echo "Running 5 containers"
-set -e
 sudo docker run --memory=128m --rm --volume /tmp/processor-oom-test-01/data:/data --volume /tmp/processor-oom-test-01/tmp:/tmp --name processor-oom-test-01 processor-skip-lines & \
 sudo docker run --memory=128m --rm --volume /tmp/processor-oom-test-02/data:/data --volume /tmp/processor-oom-test-02/tmp:/tmp --name processor-oom-test-02 processor-skip-lines & \
 sudo docker run --memory=128m --rm --volume /tmp/processor-oom-test-03/data:/data --volume /tmp/processor-oom-test-03/tmp:/tmp --name processor-oom-test-03 processor-skip-lines & \
