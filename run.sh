@@ -24,9 +24,6 @@ cp -r /tmp/processor-oom-test-01/ /tmp/processor-oom-test-03/
 cp -r /tmp/processor-oom-test-01/ /tmp/processor-oom-test-04/
 cp -r /tmp/processor-oom-test-01/ /tmp/processor-oom-test-05/
 
-echo "Turning on logging"
-rm -f /tmp/pmap.log && rm -f /tmp/ps.log && timeout --signal=9 130 watch -n1 'ps -C tail -opid --no-heading | xargs sudo pmap -x >> /tmp/pmap.log & ps -C tail -opid,size,vsize >> /tmp/ps.log' &
-
 echo "Running stress test"
 cd /tmp
 stress --io 50 --hdd 50 --hdd-bytes 10G --timeout 120s & 
