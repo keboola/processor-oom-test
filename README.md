@@ -1,7 +1,6 @@
 ## Setup
 
 ```
-sudo yum -y install stress
 cd ~
 git clone https://github.com/keboola/processor-skip-lines
 cd processor-skip-lines
@@ -10,6 +9,13 @@ cd ..
 git clone https://github.com/keboola/processor-oom-test
 cd processor-oom-test
 ./run.sh
+```
+
+## Simulate IO load
+
+```
+sudo yum -y install stress
+stress --io 50 --hdd 50 --hdd-bytes 10G --timeout 120s
 ```
 
 ## Logging
