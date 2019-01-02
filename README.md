@@ -15,5 +15,5 @@ cd processor-oom-test
 ## Logging
 
 ```
-rm -f /tmp/pmap.log && rm -f /tmp/ps.log && watch -n1 'ps -C tail -opid --no-heading | xargs sudo pmap -x >> /tmp/pmap.log & ps -C tail -opid,size,vsize >> /tmp/ps.log' 
+rm -f /tmp/pmap.log && rm -f /tmp/ps.log && watch -n1 'ps -C /code/main.php -opid --no-heading | xargs sudo pmap -x >> /tmp/pmap.log & ps -C /code/main.php -opid,size,vsize --no-heading >> /tmp/ps.log' 
 ```
