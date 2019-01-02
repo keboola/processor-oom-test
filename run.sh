@@ -23,10 +23,6 @@ cp -r /tmp/processor-oom-test-01/ /tmp/processor-oom-test-03/
 cp -r /tmp/processor-oom-test-01/ /tmp/processor-oom-test-04/
 cp -r /tmp/processor-oom-test-01/ /tmp/processor-oom-test-05/
 
-echo "Starting logging"
-rm -f /tmp/pmap.log && rm -f /tmp/ps.log 
-timeout --foreground 1 sh -c './log.sh;:'
-
 echo "Starting stress test"
 cd /tmp
 timeout --foreground 1 sh -c 'stress --io 50 --hdd 50 --hdd-bytes 10G --timeout 120s;:'
