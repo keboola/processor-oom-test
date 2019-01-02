@@ -33,4 +33,4 @@ sudo docker run --memory=128m --rm --volume /tmp/processor-oom-test-01/data:/dat
 sudo docker run --memory=128m --rm --volume /tmp/processor-oom-test-02/data:/data --volume /tmp/processor-oom-test-02/tmp:/tmp processor-skip-lines & \
 sudo docker run --memory=128m --rm --volume /tmp/processor-oom-test-03/data:/data --volume /tmp/processor-oom-test-03/tmp:/tmp processor-skip-lines & \
 sudo docker run --memory=128m --rm --volume /tmp/processor-oom-test-04/data:/data --volume /tmp/processor-oom-test-04/tmp:/tmp processor-skip-lines & \
-sudo docker run --memory=128m --rm --volume /tmp/processor-oom-test-05/data:/data --volume /tmp/processor-oom-test-05/tmp:/tmp processor-skip-lines & \
+sudo docker run --memory=128m --rm --volume /tmp/processor-oom-test-05/data:/data --volume /tmp/processor-oom-test-05/tmp:/tmp processor-skip-lines 
