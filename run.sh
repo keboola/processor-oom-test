@@ -28,8 +28,4 @@ cd /tmp
 timeout --foreground 1 sh -c 'stress --io 50 --hdd 50 --hdd-bytes 10G --timeout 120s;:'
 
 echo "Running 5 containers"
-sudo docker run --memory=128m --rm --volume /tmp/processor-oom-test-01/data:/data --volume /tmp/processor-oom-test-01/tmp:/tmp --name processor-oom-test-01 processor-skip-lines & \
-sudo docker run --memory=128m --rm --volume /tmp/processor-oom-test-02/data:/data --volume /tmp/processor-oom-test-02/tmp:/tmp --name processor-oom-test-02 processor-skip-lines & \
-sudo docker run --memory=128m --rm --volume /tmp/processor-oom-test-03/data:/data --volume /tmp/processor-oom-test-03/tmp:/tmp --name processor-oom-test-03 processor-skip-lines & \
-sudo docker run --memory=128m --rm --volume /tmp/processor-oom-test-04/data:/data --volume /tmp/processor-oom-test-04/tmp:/tmp --name processor-oom-test-04 processor-skip-lines & \
-sudo docker run --memory=128m --rm --volume /tmp/processor-oom-test-05/data:/data --volume /tmp/processor-oom-test-05/tmp:/tmp --name processor-oom-test-05 processor-skip-lines 
+seq -w 1 5 | parallel --citation eval sudo docker run --memory=1024m --rm --volume /tmp/processor-oom-test-0{}/data:/data --volume /tmp/processor-oom-test-0{}/tmp:/tmp --name processor-oom-test-0{} processor-skip-lines
