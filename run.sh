@@ -28,4 +28,4 @@ cd /tmp
 timeout --foreground 1 sh -c 'stress --io 50 --hdd 50 --hdd-bytes 10G --timeout 120s;:'
 
 echo "Running 5 containers"
-seq -w 1 5 | parallel --citation eval sudo docker run --memory=1024m --rm --volume /tmp/processor-oom-test-0{}/data:/data --volume /tmp/processor-oom-test-0{}/tmp:/tmp --name processor-oom-test-0{} processor-skip-lines
+seq -w 1 5 | parallel --will-cite eval sudo docker run --memory=256m --rm --volume /tmp/processor-oom-test-0{}/data:/data --volume /tmp/processor-oom-test-0{}/tmp:/tmp --name processor-oom-test-0{} processor-skip-lines
