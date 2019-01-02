@@ -20,4 +20,4 @@ hexdump -v -e '5/1 "%02x""\n"' /dev/urandom |
 
 echo "Running stress & container"
 cd /tmp
-stress --io 4 --hdd 4 --timeout 60s & docker run --memory=256m --rm --volume /tmp/processor-oom-test/data:/data --volume /tmp/processor-oom-test/tmp:/tmp processor-skip-lines
+stress --io 4 --hdd 4 --timeout 20s & sleep 5 && docker run --memory=256m --rm --volume /tmp/processor-oom-test/data:/data --volume /tmp/processor-oom-test/tmp:/tmp processor-skip-lines
