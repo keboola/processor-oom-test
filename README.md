@@ -1,7 +1,7 @@
 ## Setup
 
 ```
-sudo yum -y install stress
+sudo yum -y install stress parallel
 cd ~
 git clone https://github.com/keboola/processor-skip-lines
 cd processor-skip-lines
