@@ -9,8 +9,15 @@ sudo docker build . -t processor-skip-lines
 cd ..
 git clone https://github.com/keboola/processor-oom-test
 cd processor-oom-test
-./run.sh /tmp 100000000
+./run.sh /tmp 100000000 5
 ```
+
+## Arguments
+
+ 1) Folder to store the data
+ 2) Rows in CSV
+ 3) Number of containers
+ 4) Additional `docker run` parameters (optional)
 
 ## Logging
 ```
