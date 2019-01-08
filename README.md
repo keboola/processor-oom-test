@@ -9,7 +9,7 @@ sudo docker build . -t processor-skip-lines
 cd ..
 git clone https://github.com/keboola/processor-oom-test
 cd processor-oom-test
-./run.sh
+./run.sh /tmp 100000000
 ```
 
 ## Logging
