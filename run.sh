@@ -7,7 +7,7 @@ mkdir -p $1/processor-oom-test-01/data/in/files
 mkdir -p $1/processor-oom-test-01/data/in/tables
 mkdir -p $1/processor-oom-test-01/data/out/files
 mkdir -p $1/processor-oom-test-01/data/out/tables
-cp ./config.json /tmp/processor-oom-test-01/data/config.json
+cp ./config.json $1/processor-oom-test-01/data/config.json
 
 echo "Generating CSV"
 # https://stackoverflow.com/questions/29253591/generate-large-csv-with-random-content-in-bash
