@@ -18,7 +18,7 @@ hexdump -v -e '5/1 "%02x""\n"' /dev/urandom |
   head -n $2 > $1/processor-oom-test-template/data/in/files/source.csv
 
 echo "Duplicating"
-seq -w 1 $3 | parallel --will-cite eval cp -r $1/processor-oom-test-01/ $1/processor-oom-test-0{}/
+seq -w 1 $3 | parallel --will-cite eval cp -r $1/processor-oom-test-template/ $1/processor-oom-test-0{}/
 
 
 echo "Starting stress test"
