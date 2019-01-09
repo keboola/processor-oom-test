@@ -9,7 +9,7 @@ sudo docker build . -t processor-skip-lines
 cd ..
 git clone https://github.com/keboola/processor-oom-test
 cd processor-oom-test
-./run.sh /tmp 100000000 5
+./run.sh /tmp 100000000 5 120 "--memory=256m"
 ```
 
 ## Arguments
@@ -17,7 +17,15 @@ cd processor-oom-test
  1) Folder to store the data
  2) Rows in CSV
  3) Number of containers
- 4) Additional `docker run` parameters (optional)
+ 4) Stress test timeout 
+ 5) Additional `docker run` parameters (optional)
+
+Example
+
+```
+./run.sh /tmp 100000000 1 \
+"--memory=256m --device-write-bps /dev/nvme0n1:10m --device-read-bps /dev/nvme0n1:10m --device-write-bps /dev/nvme1n1:10m --device-read-bps /dev/nvme1n1:10m --device-write-bps /dev/nvme2n1:10m --device-read-bps /dev/nvme2n1:10m --device-write-bps /dev/nvme3n1:10m --device-read-bps /dev/nvme3n1:10m"
+```
 
 ## Logging
 ```
