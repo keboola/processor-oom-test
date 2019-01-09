@@ -25,7 +25,7 @@ done
 
 echo "Starting stress test"
 cd $1
-timeout --foreground 1 sh -c "stress --io 50 --hdd 50 --hdd-bytes 10G --timeout $4s;:""
+timeout --foreground 1 sh -c "stress --io 50 --hdd 50 --hdd-bytes 10G --timeout $4s;:"
 
 echo "Running $3 containers"
 seq -w 1 $3 | parallel --will-cite eval time sudo docker run --rm --volume $1/processor-oom-test-{}/data:/data --volume $1/processor-oom-test-{}/tmp:/tmp --name processor-oom-test-{} $5 processor-skip-lines
