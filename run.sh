@@ -18,12 +18,14 @@ hexdump -v -e '5/1 "%02x""\n"' /dev/urandom |
   head -n $2 > $1/processor-oom-test-template/data/in/files/source.csv
 
 echo "Duplicating"
-seq -w 1 $3 | parallel --will-cite eval cp -r $1/processor-oom-test-template/ $1/processor-oom-test-0{}/
-
+for i in `seq 1 $3`;
+do
+  cp -r $1/processor-oom-test-template/ $1/processor-oom-test-$i/
+done
 
 echo "Starting stress test"
 cd $1
 timeout --foreground 1 sh -c "stress --io 50 --hdd 50 --hdd-bytes 10G --timeout $4s;:""
 
 echo "Running $3 containers"
-seq -w 1 $3 | parallel --will-cite eval time sudo docker run --rm --volume $1/processor-oom-test-0{}/data:/data --volume $1/processor-oom-test-0{}/tmp:/tmp --name processor-oom-test-0{} $5 processor-skip-lines
+seq -w 1 $3 | parallel --will-cite eval time sudo docker run --rm --volume $1/processor-oom-test-{}/data:/data --volume $1/processor-oom-test-{}/tmp:/tmp --name processor-oom-test-{} $5 processor-skip-lines
