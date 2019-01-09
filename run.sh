@@ -18,7 +18,7 @@ hexdump -v -e '5/1 "%02x""\n"' /dev/urandom |
   head -n $2 > $1/processor-oom-test-template/data/in/files/source.csv
 
 echo "Duplicating"
-for i in `seq 1 $3`;
+for i in `seq -w 1 $3`;
 do
   cp -r $1/processor-oom-test-template/ $1/processor-oom-test-$i/
 done
