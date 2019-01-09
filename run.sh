@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Setting up"
-rm -rf $1/processor-oom-test-template
+rm -rf $1/processor-oom-test-*
 mkdir -p $1/processor-oom-test-template/tmp
 mkdir -p $1/processor-oom-test-template/data/in/files
 mkdir -p $1/processor-oom-test-template/data/in/tables
