@@ -5,7 +5,7 @@ sudo yum -y install parallel
 cd ~
 git clone https://github.com/keboola/processor-oom-test
 cd processor-oom-test
-./run.sh /tmp 100000000 20 "--memory=128m"
+./run.sh /tmp 100000000 20 "--memory=64m"
 ```
 
 ## Arguments
