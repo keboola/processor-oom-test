@@ -24,3 +24,9 @@ sudo docker pull centos:latest
 echo "Running $3 containers"
 seq -w 1 $3 | parallel --will-cite --jobs $3 eval time sudo docker run --rm --volume $1/oom-test-{}:/data --volume $(pwd)/tail.sh:/code/tail.sh --name oom-test-{} $4 centos:latest /code/tail.sh
 
+echo "Inspecting $3 containers"
+for i in `seq -w 1 $3`;
+do
+  sudo docker inspect oom-test-$i | grep OOM
+  sudo docker rm  oom-test-$i
+done
