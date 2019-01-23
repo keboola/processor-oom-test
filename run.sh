@@ -22,5 +22,5 @@ echo "Pulling container"
 sudo docker pull centos:latest
 
 echo "Running $3 containers"
-seq -w 1 $3 | parallel --will-cite --jobs $3 eval time sudo docker run --rm --volume $1/processor-oom-test-{}:/data --volume $(pwd)/tail.sh:/code/tail.sh --name oom-test-{} $4 centos:latest /code/tail.sh
+seq -w 1 $3 | parallel --will-cite --jobs $3 eval time sudo docker run --rm --volume $1/oom-test-{}:/data --volume $(pwd)/tail.sh:/code/tail.sh --name oom-test-{} $4 centos:latest /code/tail.sh
 
